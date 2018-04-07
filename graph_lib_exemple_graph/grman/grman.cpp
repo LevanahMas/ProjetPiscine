@@ -91,7 +91,6 @@ BITMAP *get_picture(std::string pic_name)
         if (pic)
         {
             g_pic_names.insert( std::make_pair(pic_name, pic) );
-            std::cout << "Loaded " << pic_name << std::endl;
         }
         else
         {

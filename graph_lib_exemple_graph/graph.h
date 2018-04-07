@@ -140,7 +140,7 @@ class Vertex
 
         /// un exemple de donnée associée à l'arc, on peut en ajouter d'autres...
         double m_value;
-
+        float m_r;
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<VertexInterface> m_interface = nullptr;
 
@@ -305,6 +305,9 @@ class Graph
         /// La "liste" des arêtes
         std::map<int, Edge> m_edges;
 
+        std::vector<float> coeff;
+        std::vector<float> K;
+
         /// La liste des sommets
         std::map<int, Vertex> m_vertices;
 
@@ -320,7 +323,7 @@ class Graph
             m_interface(interface)  {  }
 
         void add_interfaced_vertex(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
-        void add_interfaced_edge(int idx, int vert1, int vert2, double weight=0);
+        void add_interfaced_edge(int idx, int vert1, int vert2, double weight=0, int coeff=0);
 
         /// Méthode spéciale qui construit un graphe arbitraire (démo)
         /// Voir implémentation dans le .cpp
@@ -333,6 +336,11 @@ class Graph
         void ajouterArete();
         void supprimerArete();
         void supprimerSommet();
+        void lirefichier(std::string nom_fichier);
+        void sauvegarde(std::string nom_fichier);
+        void calcul_value();
+        void calcul_coeff();
+
 
         void test_remove_edge(int eidx);
 

@@ -30,6 +30,7 @@ VertexInterface::VertexInterface(int idx, int x, int y, std::string pic_name, in
     {
         m_top_box.add_child( m_img );
         m_img.set_pic_name(pic_name);
+        m_img.get_pic_name(pic_name);
         m_img.set_pic_idx(pic_idx);
         m_img.set_gravity_x(grman::GravityX::Right);
     }
@@ -221,7 +222,7 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
 /// de chargement de fichiers par exemple.
 /// Bien sûr on ne veut pas que vos graphes soient construits
 /// "à la main" dans le code comme ça.
-void Graph::make_example()
+/*void Graph::make_example()
 {
     m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600);
     // La ligne précédente est en gros équivalente à :
@@ -230,30 +231,159 @@ void Graph::make_example()
     /// Les sommets doivent être définis avant les arcs
     // Ajouter le sommet d'indice 0 de valeur 30 en x=200 et y=100 avec l'image clown1.jpg etc...
     add_interfaced_vertex(0, 30.0, 200, 100, "clown1.jpg");
-    add_interfaced_vertex(1, 60.0, 400, 100, "clown2.jpg");
-    add_interfaced_vertex(2,  50.0, 200, 300, "clown3.jpg");
-    add_interfaced_vertex(3,  0.0, 400, 300, "clown4.jpg");
-    add_interfaced_vertex(4,  100.0, 600, 300, "clown5.jpg");
-    add_interfaced_vertex(5,  0.0, 100, 500, "bad_clowns_xx3xx.jpg", 0);
-    add_interfaced_vertex(6,  0.0, 300, 500, "bad_clowns_xx3xx.jpg", 1);
-    add_interfaced_vertex(7,  0.0, 500, 500, "bad_clowns_xx3xx.jpg", 2);
 
     /// Les arcs doivent être définis entre des sommets qui existent !
     // AJouter l'arc d'indice 0, allant du sommet 1 au sommet 2 de poids 50 etc...
     add_interfaced_edge(0, 1, 2, 50.0);
-    add_interfaced_edge(1, 0, 1, 50.0);
-    add_interfaced_edge(2, 1, 3, 75.0);
-    add_interfaced_edge(3, 4, 1, 25.0);
-    add_interfaced_edge(4, 6, 3, 25.0);
-    add_interfaced_edge(5, 7, 3, 25.0);
-    add_interfaced_edge(6, 3, 4, 0.0);
-    add_interfaced_edge(7, 2, 0, 100.0);
-    add_interfaced_edge(8, 5, 2, 20.0);
-    add_interfaced_edge(9, 3, 7, 80.0);
+
+}*/
+void Graph::lirefichier(std::string nom_fichier)
+{
+    m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600);
+    //ouvrir fichier
+    std::ifstream fichier(nom_fichier,std::ios::in);
+    if(fichier)
+    {
+        //variables temporaires pour le constructeur
+        int nb_sommet, nb_arete;
+        int indice;
+        double value;
+        //int pop;
+        int x;
+        int y;
+        std::string nom="";
+
+        int aindice, s1, s2;
+        double poids;
+        float coeff;
+       // std::string ligne;
+
+        //infos en tete de fichier qui donne l'ordre
+        fichier>>nb_sommet;
+        fichier>>nb_arete;
+
+        for (int i=0;i<nb_sommet;i++)
+        {
+            //recuperation des données du fichier
+            fichier>>indice;
+            fichier>>value;
+            //fichier>>pop;
+            fichier>>x;
+            fichier>>y;
+            fichier>>nom;
+
+            add_interfaced_vertex(indice, value, x, y, nom);
+        }
+
+        calcul_coeff();
+        for (int i=0;i<nb_arete;i++)
+        {
+            //recuperation des données du fichier
+            fichier>>aindice;
+            fichier>>s1;
+            fichier>>s2;
+            fichier>>poids;
+            fichier>>coeff;
+
+            add_interfaced_edge(aindice, s1, s2, poids, coeff);
+
+        }
+    }
+    //fermeture du fichier
+    else std::cerr<<"Probleme fichier"<<std::endl;
+
+    fichier.close();
 }
 
+void Graph::sauvegarde(std::string nom_fichier)
+{
+
+    std::ofstream fichier(nom_fichier,std::ios::out|std::ios::trunc);
+    if(fichier)
+    {
+        fichier<<m_vertices.size()<<"\n";
+        fichier<<m_edges.size()<<"\n";
+        for (const auto& it : m_vertices)
+        {
+           // fichier<<it.second.m_interface->m_label_idx.get_message();
+            fichier<<it.first<<" ";
+            fichier<< it.second.m_interface->m_label_value.get_message()<<" ";
+            //fichier<<it.second.m_pop<<" ";
+            fichier<< it.second.m_interface->m_top_box.get_posx()<<" ";
+            fichier<< it.second.m_interface->m_top_box.get_posy()<<" ";
+            fichier<< it.second.m_interface->m_img.get_pic_name("");
+            fichier<<"\n";
+
+        }
+
+        for (const auto& it : m_edges)
+        {
+            fichier<<it.first<<" ";
+            fichier<< it.second.m_from<<" ";
+            fichier<< it.second.m_to<<" ";
+            fichier<< it.second.m_weight <<" ";
+            fichier<<coeff[it.first];
+            fichier<<"\n";
+
+        }
+    }
+    //fermeture du fichier
+    else std::cerr<<"Probleme fichier"<<std::endl;
+
+    fichier.close();
+}
+void Graph::calcul_coeff()
+{
+    float pop_bis;
+
+    for(const auto& ite : m_vertices)
+    {
+        pop_bis = ((float)ite.second.m_value);
+        coeff.push_back((pop_bis/100));
+        std::cout<<coeff[ite.first]<<std::endl;
+    }
+
+}
+
+void Graph::calcul_value()
+{
+    float k_value;
+    int id=0;
+    int value_bis;
+
+    for(const auto& it : m_vertices)
+    {
+        for(const auto& ita : m_edges)
+        {
+            if(it.first == ita.second.m_to)
+            {
+                id = ita.second.m_from;
+                for(const auto& itb : m_vertices)
+                {
+                    if(itb.first == id)
+                    {
+                        value_bis = itb.second.m_value;
+                    }
+                   // else if()
+                }
+                k_value = k_value + (ita.second.m_weight * value_bis);
+            }
+        }
+       // double value_ter = it.second.m_value;
+       // double temp = (1 - (value_ter/k_value));
+        //value_ter + (it.second.m_r * value_ter * temp)
+        //it.second.m_val = value_ter + (it.second.m_r * value_ter * temp);
+
+        //m_vertices[i].m_interface->m_label_value.set_message(value_ter + (it.second.m_r * value_ter * temp));
+        //std::cout<<value_ter<<std::endl;
+               // value_ter + (it.second.m_r * value_ter * temp);
+        //std::cout<<it.second.m_value<<std::endl;
+    }
+
+
+}
 // Lecture des fichiers textes:
-void Graph::Lire_fichier(std::string nomfichier)
+/*void Graph::Lire_fichier(std::string nomfichier)
 {
     ///Declaration des variables pour la lecture des sommets
     std::string nomImage;
@@ -304,7 +434,7 @@ void Graph::Lire_fichier(std::string nomfichier)
         }
     }
     fichier.close();
-}
+}*/
 
 /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
 void Graph::update()
@@ -409,7 +539,7 @@ void Graph::add_interfaced_vertex(int idx, double value, int x, int y, std::stri
 }
 
 /// Aide à l'ajout d'arcs interfacés
-void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weight)
+void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weight, int coeff)
 {
     if ( m_edges.find(idx)!=m_edges.end() )
     {
@@ -436,10 +566,13 @@ void Graph::ajouterSommet()
 {
     std::string nomImage;
     double valeur;
-    cout << "Entrer la valeur du sommet" << endl;
-    cin >> valeur;
-    cout << "Entrer le nom de l'image" << endl;
-    cin >> nomImage;
+
+    std::cout << "Entrer la valeur du sommet" << std::endl;
+    std::cin >> valeur;
+
+
+    std::cout << "Entrer le nom de l'image" << std::endl;
+    std::cin >> nomImage;
 
     add_interfaced_vertex(m_vertices.size(), valeur, 120, 10, nomImage);
 }
@@ -550,8 +683,11 @@ void Graph::menu()
                     {
                      /// lancement du jeu niveau 1
                      //make_example();
-                     Lire_fichier("essai.txt");
+                    // lirefichier("sauv_desert.txt");
+                     //Lire_fichier("essai.txt");
                         quitter=true;
+                    //sauvegarde("sauv_desert.txt");
+
                     }
 
 
