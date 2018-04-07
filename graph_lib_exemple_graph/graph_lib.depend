@@ -1,0 +1,113 @@
+# depslib dependency file v1.0
+1523038933 source:c:\users\levanah\documents\graph_lib_v1\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1523038933 c:\users\levanah\documents\graph_lib_v1\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1523053034 source:c:\users\levanah\documents\graph_lib_v1\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1523038933 c:\users\levanah\documents\graph_lib_v1\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1523038933 c:\users\levanah\documents\graph_lib_v1\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1523038933 c:\users\levanah\documents\graph_lib_v1\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1523038933 source:c:\users\levanah\documents\graph_lib_v1\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1523058459 source:c:\users\levanah\documents\graph_lib_v1\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1523055012 c:\users\levanah\documents\graph_lib_v1\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523058389 source:c:\users\levanah\documents\graph_lib_v1\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<fstream>
+
+1523065669 source:c:\users\levanah\desktop\projetpiscine\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<fstream>
+
+1523055012 c:\users\levanah\desktop\projetpiscine\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523038933 c:\users\levanah\desktop\projetpiscine\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1523038933 c:\users\levanah\desktop\projetpiscine\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1523038933 c:\users\levanah\desktop\projetpiscine\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1523038933 c:\users\levanah\desktop\projetpiscine\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1523038933 source:c:\users\levanah\desktop\projetpiscine\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1523059931 source:c:\users\levanah\desktop\projetpiscine\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1523038933 source:c:\users\levanah\desktop\projetpiscine\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1523063358 source:c:\users\levanah\desktop\projetpiscine\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
