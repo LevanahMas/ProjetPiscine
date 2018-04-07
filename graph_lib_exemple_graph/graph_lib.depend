@@ -111,3 +111,29 @@
 	<iostream>
 	"graph.h"
 
+1523038934 source:c:\users\alice\desktop\alice\documents\2017-2018\info\projetpiscine\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1523038934 c:\users\alice\desktop\alice\documents\2017-2018\info\projetpiscine\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1523038934 source:c:\users\alice\desktop\alice\documents\2017-2018\info\projetpiscine\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1523038934 c:\users\alice\desktop\alice\documents\2017-2018\info\projetpiscine\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1523038934 c:\users\alice\desktop\alice\documents\2017-2018\info\projetpiscine\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1523038934 c:\users\alice\desktop\alice\documents\2017-2018\info\projetpiscine\graph_lib_exemple_graph\grman\grman_couleurs.h
+

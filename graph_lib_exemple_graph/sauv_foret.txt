@@ -1,0 +1,34 @@
+12
+20
+0 50 92 92 gland.jpg
+1 50 292 92 gendarme.jpg
+2 50 492 92 champignon.jpg
+3 50 292 292 chevreuil.jpg
+4 50 170 288 renard.jpg
+5 50 529 251 taupe.jpg
+6 50 379 295 sanglier.jpg
+7 50 692 92 lievre.jpg
+8 50 692 292 ecureuil.jpg
+9 50 525 411 vers_terre.jpg
+10 50 159 430 pipit_arbre.jpg
+11 50 598 598 mure.jpg
+0 6 0 0
+1 8 0 0
+2 3 0 0
+3 3 11 0
+4 10 1 0
+5 4 11 0
+6 4 7 0
+7 4 5 0
+8 5 9 0
+9 7 11 0
+10 7 2 0
+11 6 5 0
+12 6 9 0
+13 6 0 0
+14 6 7 0
+15 10 1 0
+16 10 9 0
+17 5 1 0
+18 8 1 0
+19 9 11 0
