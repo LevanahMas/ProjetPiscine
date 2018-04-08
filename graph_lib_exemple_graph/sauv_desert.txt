@@ -1,16 +1,16 @@
 7
 7
-0 40 500 81 gerbille.jpg
-1 50 10 135 ganga.jpg
-2 64 54 399 dromadaire.jpg
-3 11 354 462 herbe.jpg
-4 88 624 245 oryx.jpg
-5 20 268 25 serpent_corne.jpg
-6 60 302 223 graine.jpg
+0 2 476 57 gerbille.jpg
+1 65 72 233 ganga.jpg
+2 18 30 375 dromadaire.jpg
+3 75 330 438 herbe.jpg
+4 74 600 221 oryx.jpg
+5 88 244 1 serpent_corne.jpg
+6 88 324 243 graine.jpg
 0 0 6 31.25 0.4
-1 1 6 80 0.5
-2 2 3 12.5 0.64
-3 2 6 56.25 0.11
-4 4 3 21.875 0.88
+1 1 6 40.625 0.5
+2 2 3 81.25 0.72
+3 2 6 56.25 0.42
+4 4 3 21.875 0.11
 5 5 0 46.875 0.2
-6 5 1 21 0.6
+6 5 1 21 0.2

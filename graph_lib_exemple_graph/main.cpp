@@ -19,18 +19,20 @@ int main()
     //g.Lire_fichier("essai.txt");
 
 
+
     /// Vous gardez la main sur la "boucle de jeu"
     /// ( contrairement à des frameworks plus avancés )
     while ( !key[KEY_ESC] )
     {
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
         g.update();
+        g.calcul_value();
         //g.menu();
 
         /// Mise à jour générale (clavier/souris/buffer etc...)
         grman::mettre_a_jour();
     }
-    g.sauvegarde("sauv_desert.txt");
+   // g.sauvegarde("sauv_desert.txt");
 
     grman::fermer_allegro();
 

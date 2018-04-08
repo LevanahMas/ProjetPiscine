@@ -248,7 +248,6 @@ void Graph::lirefichier(std::string nom_fichier)
         int nb_sommet, nb_arete;
         int indice;
         double value;
-        //int pop;
         int x;
         int y;
         std::string nom="";
@@ -256,7 +255,6 @@ void Graph::lirefichier(std::string nom_fichier)
         int aindice, s1, s2;
         double poids;
         float coeff;
-       // std::string ligne;
 
         //infos en tete de fichier qui donne l'ordre
         fichier>>nb_sommet;
@@ -351,36 +349,28 @@ void Graph::calcul_value()
     int id=0;
     int value_bis;
 
-    for(const auto& it : m_vertices)
+    for(map<int, Vertex>::iterator it=m_vertices.begin(); it!=m_vertices.end(); it++)
     {
-        for(const auto& ita : m_edges)
+        for(map<int, Edge>::iterator ita=m_edges.begin(); ita!=m_edges.end(); ita++)
         {
-            if(it.first == ita.second.m_to)
+            if(it->first == ita->second.m_to)
             {
-                id = ita.second.m_from;
-                for(const auto& itb : m_vertices)
+                id = ita->second.m_from;
+                for(map<int, Vertex>::iterator itb=m_vertices.begin(); itb!=m_vertices.end(); itb++)
                 {
-                    if(itb.first == id)
+                    if(itb->first == id)
                     {
-                        value_bis = itb.second.m_value;
+                        value_bis = itb->second.m_value;
                     }
-                   // else if()
                 }
-                k_value = k_value + (ita.second.m_weight * value_bis);
+                k_value = k_value + (ita->second.m_weight * value_bis);
             }
         }
-       // double value_ter = it.second.m_value;
-       // double temp = (1 - (value_ter/k_value));
-        //value_ter + (it.second.m_r * value_ter * temp)
-        //it.second.m_val = value_ter + (it.second.m_r * value_ter * temp);
 
-        //m_vertices[i].m_interface->m_label_value.set_message(value_ter + (it.second.m_r * value_ter * temp));
-        //std::cout<<value_ter<<std::endl;
-               // value_ter + (it.second.m_r * value_ter * temp);
-        //std::cout<<it.second.m_value<<std::endl;
+        double temp = (1 - (it->second.m_value/k_value));
+        it->second.m_value = it->second.m_value + (it->second.m_r * it->second.m_value * temp);
+        std::cout<<it->second.m_value<<std::endl;
     }
-
-
 }
 // Lecture des fichiers textes:
 /*void Graph::Lire_fichier(std::string nomfichier)
@@ -480,8 +470,7 @@ void Graph::update()
         supprimerArete();
     }
 
-
-
+    sauvegarde("sauv_desert.txt");
 }
 
 /// eidx index of edge to remove
@@ -683,7 +672,7 @@ void Graph::menu()
                     {
                      /// lancement du jeu niveau 1
                      //make_example();
-                    // lirefichier("sauv_desert.txt");
+                        //lirefichier("sauv_desert.txt");
                      //Lire_fichier("essai.txt");
                         quitter=true;
                     //sauvegarde("sauv_desert.txt");
@@ -713,8 +702,3 @@ void Graph::menu()
         }
     }
 }
-
-
-
-
-
