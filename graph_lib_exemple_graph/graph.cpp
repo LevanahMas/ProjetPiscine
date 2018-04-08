@@ -338,7 +338,7 @@ void Graph::calcul_coeff()
     {
         pop_bis = ((float)ite.second.m_value);
         coeff.push_back((pop_bis/100));
-        std::cout<<coeff[ite.first]<<std::endl;
+       // std::cout<<coeff[ite.first]<<std::endl;
     }
 
 }
@@ -470,7 +470,7 @@ void Graph::update()
         supprimerArete();
     }
 
-    sauvegarde("sauv_desert.txt");
+    sauvegarde("sauv_foret.txt");
 }
 
 /// eidx index of edge to remove

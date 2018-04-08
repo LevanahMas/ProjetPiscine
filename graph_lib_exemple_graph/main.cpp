@@ -14,7 +14,7 @@ int main()
 
     /// Un exemple de graphe
     Graph g;
-    g.lirefichier("sauv_desert.txt");
+    g.lirefichier("sauv_foret.txt");
     //g.make_example();
     //g.Lire_fichier("essai.txt");
 
